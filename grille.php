@@ -18,7 +18,7 @@
         echo'<table>';
         for ($i=0;$i<$taille;$i++){
 
-            echo '<TR>'.$i;
+            echo '<TR>'.$i." ";
             //affichage des grilles créees + liens vers ces dernières.
             echo '<td>'.$i.'</td>';
             echo '</TR>';
