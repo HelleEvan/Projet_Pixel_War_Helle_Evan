@@ -33,7 +33,7 @@
 
                 echo '<TR>';
                 //affichage des grilles créees + liens vers ces dernières.
-                    echo '<td><a href="index.html?param='.$nom.'">'.$nom.'</a></td>';
+                    echo '<td><a href="grille.php?nom='.$nom.'&param='.$pseudo.'">'.$nom.'</a></td>';
                 echo '</TR>';
             }
         ?>
