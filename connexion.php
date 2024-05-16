@@ -20,7 +20,7 @@
                     $_SESSION['isConnected']=true;
                     $_SESSION['pseudo']=$_POST["pseudo"];
                     // je vais à la page index.html
-                    header("location: ./../Projet_Pixel_War_Helle_Evan/index.html"); 
+                    header("location: ./../Projet_Pixel_War_Helle_Evan/selection_grille.php"); 
                 }
             else
                 {
