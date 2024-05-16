@@ -1,6 +1,9 @@
 <?php 
     include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
     $MauvaisMotDePasse=$MauvaisCompte=false;
+    if(isset($_GET["isDeconected"])){
+        $_SESSION['isConnected']=false;
+    }
 
     // si je POSTE le champ, c'est que j'essaie de me connecter
     if (isset($_POST["pseudo"]))

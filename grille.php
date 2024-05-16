@@ -1,6 +1,8 @@
 <?php 
     include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
     $grille=QuoteStr($_GET["nom"]);
+    //pour ne pas avoir les apostrophes dans le titre de la page
+    $titre=$_GET["nom"];
     $pseudo=$_GET["param"];
 ?>
 
@@ -9,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <?php echo $grille?></title>
+    <title> <?php echo $titre?></title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>

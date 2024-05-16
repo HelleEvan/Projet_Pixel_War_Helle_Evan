@@ -1,6 +1,9 @@
 <?php 
     include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
     $pseudo=$_GET["param"];
+    if($_SESSION['isConnected']==false){
+        header("location: connexion.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +45,6 @@
     </table>
     <br>
 
-    <a href="./../Projet_Pixel_War_Helle_Evan/connexion.php">Deconnexion</a>
+    <a href="./../Projet_Pixel_War_Helle_Evan/connexion.php?isDeconected=1">Deconnexion</a>
 </body>
 </html>
