@@ -18,9 +18,9 @@
             if($hash==$hash_poste)
                 {
                     $_SESSION['isConnected']=true;
-                    $_SESSION['pseudo']=$_POST["pseudo"];
-                    // je vais à la page index.html
-                    header("location: ./../Projet_Pixel_War_Helle_Evan/selection_grille.php"); 
+                    $pseudo=$_POST["pseudo"];
+                    // je vais à la page de selection de grille
+                    header("location: ./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param=".$pseudo); 
                 }
             else
                 {
