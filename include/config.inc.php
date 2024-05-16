@@ -1,10 +1,12 @@
+<!-- Ce fichier est récupéré d'un précedent TP. Toutes les fonctions ont été créée par MR Lesprit. Bien sûr, je comprends ces dernières et suis capable de les utiliser.  -->
+
 <?php
 session_start();
 
 $host='localhost';
-$user = "esirem";
-$password = "esirem21";
-$base = "esirem";
+$user = "evan";
+$password = "esirem";
+$base = "pixel_war";
 
 $link = connexion_MySQLi_procedural($host, $user,$password,$base);
 
