@@ -18,7 +18,8 @@
         <h3>entrez un mot de passe</h3>
         <input type="password" name="password" value="" required>
         <input type="submit" value="S'enregister">
-        </form>
+    </form>
+    <a href="./../Projet_Pixel_War_Helle_Evan\creation_compte.php"> Création de compte</a>
     
 </body>
 </html>

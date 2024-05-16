@@ -35,6 +35,7 @@
         <input type="text" name="email" value="" required>
         <input type="submit" value="S'enregister">
     </form>
+    <a href="./../Projet_Pixel_War_Helle_Evan\connexion.php"> Déjà un compte? -> S'identifier</a>
     
 </body>
 </html>
