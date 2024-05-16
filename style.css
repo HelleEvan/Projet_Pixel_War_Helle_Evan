@@ -1,7 +1,12 @@
 table {
     border: 2px solid rgb(140 140 140);
+    zoom: 200%;
   }
   th,tr,
 td {
   border: 1px solid rgb(160 160 160);
 }
+body{
+    text-align: center;
+}
+

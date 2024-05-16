@@ -16,7 +16,7 @@
     <?php 
         $requete = "SELECT `taille` FROM `grille` WHERE `nom`=".$grille;
         $taille = GetSQLValue($requete);
-        echo'<table>';
+        echo'<table align="center">';
         for ($i=0;$i<$taille;$i++){
 
             //affichage des grilles créees + liens vers ces dernières.
