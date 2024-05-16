@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo $grille?></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php 
@@ -18,12 +19,13 @@
         echo'<table>';
         for ($i=0;$i<$taille;$i++){
 
-            echo '<TR>'.$i." ";
             //affichage des grilles créees + liens vers ces dernières.
-            echo '<td>'.$i.'</td>';
-            echo '</TR>';
+            echo '<tr>';
+            for($n=0;$n<$taille;$n++){
+                echo '<td>'."  ".'</td>';
+            }
+            echo '</tr>';
         }
-        echo'</tr>';
 
         echo'</table>';
     ?>
