@@ -1,9 +1,10 @@
 <?php 
     include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
     //recuperation des POST
+    $isCreated = false;
     if (isset($_POST["pseudo"]))
         {
-
+            
             $pseudo=QuoteStr($_POST["pseudo"]);
             $email=QuoteStr($_POST["email"]);
             //hash du password
@@ -12,6 +13,8 @@
 
             $sql="INSERT INTO `user` (`pseudo`, `password`, `email`) VALUES ($pseudo, $password,$email)";
             ExecuteSQL($sql);
+            $isCreated = true;
+            
 
         }
 ?>
@@ -35,6 +38,12 @@
         <input type="text" name="email" value="" required>
         <input type="submit" value="S'enregister">
     </form>
+    <?php
+        if($isCreated){
+            echo "<h3> /!\ Votre compte à été crée avec succès  /!\ </h3>";
+            
+        }
+    ?>
     <a href="./../Projet_Pixel_War_Helle_Evan\connexion.php"> Déjà un compte? -> S'identifier</a>
     
 </body>

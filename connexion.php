@@ -6,10 +6,10 @@
     }
 
     // si je POSTE le champ, c'est que j'essaie de me connecter
-    if (isset($_POST["pseudo"]))
+    if (isset($_POST["email"]))
     {
 
-        $password_bdd="select password from `user` where pseudo = ".QuoteStr($_POST["pseudo"]);
+        $password_bdd="select password from `user` where email = ".QuoteStr($_POST["email"]);
         $hash=GetSQLValue($password_bdd);
                 
         // la variable $hash correspond au sha256 du password
@@ -21,7 +21,8 @@
             if($hash==$hash_poste)
                 {
                     $_SESSION['isConnected']=true;
-                    $pseudo=$_POST["pseudo"];
+                    $pseudo_requete="select pseudo from `user` where email = ".QuoteStr($_POST["email"]);
+                    $pseudo = GetSQLValue($pseudo_requete);
                     // je vais à la page de selection de grille
                     header("location: ./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param=".$pseudo); 
                 }
@@ -63,8 +64,8 @@
 
     <h1>Veuillez vous identifier</h1>
     <form method="POST">
-        <h3>entrez un pseudo</h3>
-        <input type="text" name="pseudo" value="" required>
+        <h3>entrez votre email</h3>
+        <input type="text" name="email" value="" required>
         <h3>entrez un mot de passe</h3>
         <input type="password" name="password" value="" required>
         <input type="submit" value="Connexion">
