@@ -2,6 +2,8 @@
     include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
     //recuperation des POST
     $isCreated = false;
+    $pseudo_already_used =false;
+    $email_already_used =false;
     if (isset($_POST["pseudo"]))
         {
             
@@ -10,12 +12,25 @@
             //hash du password
             $hash_password=hash('sha256', $_POST["password"]);
             $password=QuoteStr($hash_password);
+            //gestion pseudo et email identique
+            $existing_pseudo_requete = "SELECT * FROM `user` WHERE `pseudo`=$pseudo";
+            $existing_pseudo = GetSQL($existing_pseudo_requete,$tab);
+            $existing_email_requete = "SELECT * FROM `user` WHERE `email`=$email";
+            $existing_email = GetSQL($existing_email_requete,$tab1);
+            if(isset($existing_pseudo)){
 
-            $sql="INSERT INTO `user` (`pseudo`, `password`, `email`) VALUES ($pseudo, $password,$email)";
-            ExecuteSQL($sql);
-            $isCreated = true;
-            
+                $pseudo_already_used =true;
+            }
+            else if (isset($existing_email)){
+                $email_already_used = true;
+            }
+            else{
 
+                $sql="INSERT INTO `user` (`pseudo`, `password`, `email`) VALUES ($pseudo, $password,$email)";
+                ExecuteSQL($sql);
+                $isCreated = true;
+            }
+        
         }
 ?>
 
@@ -40,8 +55,13 @@
     </form>
     <?php
         if($isCreated){
-            echo "<h3> /!\ Votre compte à été crée avec succès  /!\ </h3>";
-            
+            echo "<h3 class='well_created'> /!\ Votre compte à été crée avec succès  /!\ </h3>";
+        }
+        if($pseudo_already_used){
+            echo "<h3 class='warning'> /!\ le pseudo à déjà été utilisé /!\ </h3>";
+        }
+        if($email_already_used){
+            echo "<h3 class='warning'> /!\ le mail à déjà été utilisé  /!\ </h3>";
         }
     ?>
     <a href="./../Projet_Pixel_War_Helle_Evan\connexion.php"> Déjà un compte? -> S'identifier</a>
