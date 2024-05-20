@@ -1,6 +1,7 @@
 <?php 
     include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
     $pseudo=$_GET["param"];
+    //test de connexion
     if($_SESSION['isConnected']==false){
         header("location: connexion.php");
     }

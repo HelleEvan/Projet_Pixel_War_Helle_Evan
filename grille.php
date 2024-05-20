@@ -4,6 +4,7 @@
     //pour ne pas avoir les apostrophes dans le titre de la page
     $titre=$_GET["nom"];
     $pseudo=$_GET["param"];
+    //test de connexion
     if($_SESSION['isConnected']==false){
         header("location: connexion.php");
     }
