@@ -65,7 +65,7 @@
     <h1>Veuillez vous identifier</h1>
     <form method="POST">
         <h3>entrez votre email</h3>
-        <input type="text" name="email" value="" required>
+        <input type="email" name="email" value="" required>
         <h3>entrez un mot de passe</h3>
         <input type="password" name="password" value="" required>
         <input type="submit" value="Connexion">

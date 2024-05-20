@@ -13,10 +13,10 @@
             $hash_password=hash('sha256', $_POST["password"]);
             $password=QuoteStr($hash_password);
             //gestion pseudo et email identique
-            $existing_pseudo_requete = "SELECT * FROM `user` WHERE `pseudo`=$pseudo";
-            $existing_pseudo = GetSQL($existing_pseudo_requete,$tab);
-            $existing_email_requete = "SELECT * FROM `user` WHERE `email`=$email";
-            $existing_email = GetSQL($existing_email_requete,$tab1);
+            $existing_pseudo_requete = "SELECT `pseudo` FROM `user` WHERE `pseudo`=".$pseudo;
+            $existing_pseudo = GetSQLValue($existing_pseudo_requete);
+            $existing_email_requete = "SELECT `email` FROM `user` WHERE `email`=".$email;
+            $existing_email = GetSQLValue($existing_email_requete);
             if(isset($existing_pseudo)){
 
                 $pseudo_already_used =true;
@@ -40,6 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enregistrement</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Création de compte</h1>
@@ -50,7 +51,7 @@
         <h3>entrez un mot de passe</h3>
         <input type="password" name="password" value="" required>
         <h3>entrez un mail</h3>
-        <input type="text" name="email" value="" required>
+        <input type="email" name="email" value="" required>
         <input type="submit" value="S'enregister">
     </form>
     <?php

@@ -9,4 +9,10 @@ td {
 body{
     text-align: center;
 }
+.warning{
+  color: red;
+}
+.well_created{
+  color: greenyellow;
+}
 
