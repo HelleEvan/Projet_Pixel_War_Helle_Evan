@@ -70,6 +70,7 @@
             echo "<h3 class='warning'> /!\ Le compte n'existe pas ... /!\ </h3>";
         }
     ?>
+    <br>
     <a href="../php/creation_compte.php"> Création de compte</a>
     
 </body>

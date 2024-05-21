@@ -1,13 +1,18 @@
 <?php 
     include("../include/config.inc.php");
-    $grille=QuoteStr($_GET["nom"]);
-    //pour ne pas avoir les apostrophes dans le titre de la page
-    $titre=$_GET["nom"];
-    $id=$_GET["param"];
     //test de connexion
     if($_SESSION['isConnected']==false){
         header("location: ../php/connexion.php");
     }
+    $grille=QuoteStr($_GET["nom"]);
+    //pour ne pas avoir les apostrophes dans le titre de la page
+    $titre=$_GET["nom"];
+    $id=$_GET["param"];
+    
+    $id_createur_requete ="SELECT `id_createur`FROM `grille` WHERE `nom`=".$grille;
+    $id_createur = GetSQLValue($id_createur_requete);
+    $createur_requete = "SELECT `pseudo` FROM `user` WHERE id=".$id_createur;
+    $createur = GetSQLValue($createur_requete);
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +37,10 @@
 
 
    <?php echo'<a href="../php/selection_grille.php?param='.$id.'">Retour à la selection</a>'?>
+   <br>
+    <?php 
+    echo 'Cette grille a été crée par :'.$createur;
+    ?>
 </body>
 </html>
 

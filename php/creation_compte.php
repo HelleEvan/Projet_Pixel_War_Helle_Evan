@@ -65,6 +65,7 @@
             echo "<h3 class='warning'> /!\ le mail a déjà été utilisé  /!\ </h3>";
         }
     ?>
+    <br>
     <a href="../php/connexion.php"> Déjà un compte? -> S'identifier</a>
     
 </body>

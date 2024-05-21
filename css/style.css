@@ -14,7 +14,9 @@ body{
   -webkit-text-stroke: 0.4px #444;
 }
 .well_created{
-  color: greenyellow;
+
+  -webkit-text-fill-color: greenyellow; /* Will override color (regardless of order) */
+  -webkit-text-stroke: 0.4px #444;
 }
 
 grille {
