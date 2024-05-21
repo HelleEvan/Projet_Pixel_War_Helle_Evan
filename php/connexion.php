@@ -51,18 +51,6 @@
 </head>
 <body>
 
-<!-- On regarde le mot de passe-->
-<?php if ($MauvaisMotDePasse) { ?>
-            <div>
-                <strong>Attention!</strong> Vous avez saisi un mauvais mot de passe.
-            </div>
-        <?php } ?>
-
-        <?php if ($MauvaisCompte) { ?>
-            <div>
-                <strong>Attention!</strong> Le compte n'existe pas ...
-            </div>
-        <?php } ?>
 
 
     <h1>Veuillez vous identifier</h1>
@@ -73,6 +61,15 @@
         <input type="password" name="password" value="" required>
         <input type="submit" value="Connexion">
     </form>
+<!-- On regarde le mot de passe et le compte-->
+    <?php
+        if($MauvaisMotDePasse){
+            echo "<h3 class='warning'> /!\ Vous avez saisi un mauvais mot de passe. /!\ </h3>";
+        }
+        else if($MauvaisCompte){
+            echo "<h3 class='warning'> /!\ Le compte n'existe pas ... /!\ </h3>";
+        }
+    ?>
     <a href="../php/creation_compte.php"> Création de compte</a>
     
 </body>

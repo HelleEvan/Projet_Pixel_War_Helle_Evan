@@ -6,9 +6,12 @@ table{
 body{
     text-align: center;
     font-family: sans-serif;
+    background-color: #d4d9dd;
+    color: #000000;
 }
 .warning{
-  color: red;
+  -webkit-text-fill-color: red; /* Will override color (regardless of order) */
+  -webkit-text-stroke: 0.4px #444;
 }
 .well_created{
   color: greenyellow;
