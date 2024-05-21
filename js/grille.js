@@ -16,12 +16,15 @@ function color(){
         colors_display.forEach(color =>{
             pixel.addEventListener("click",()=>{
                 if(color.classList.contains("red")&&color.classList.contains("active")){
+                    rm_color(pixel);
                     pixel.classList.add("red");
                 }
                 if(color.classList.contains("green")&&color.classList.contains("active")){
+                    rm_color(pixel);
                     pixel.classList.add("green");
                 }
                 if(color.classList.contains("blue")&&color.classList.contains("active")){
+                    rm_color(pixel);
                     pixel.classList.add("blue");
                 }
             });
@@ -29,6 +32,18 @@ function color(){
     });
 }
 window.addEventListener("load",color());
+
+function rm_color(pixel){
+    if(pixel.classList.contains("red")){
+        pixel.classList.remove("red");
+    }
+    else if(pixel.classList.contains("green")){
+        pixel.classList.remove("green");
+    }
+    else if(pixel.classList.contains("blue")){
+        pixel.classList.remove("blue");
+    }
+}
 //selection de couleur
 function color_choice(){
     const colors_display = Array.from(document.querySelectorAll("color"));
