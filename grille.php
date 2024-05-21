@@ -20,22 +20,30 @@
 </head>
 <body>
     <?php 
-        $requete = "SELECT `taille` FROM `grille` WHERE `nom`=".$grille;
-        $taille = GetSQLValue($requete);
-        echo'<table align="center">';
-        for ($i=0;$i<$taille;$i++){
+        // $requete = "SELECT `taille` FROM `grille` WHERE `nom`=".$grille;
+        // $taille = GetSQLValue($requete);
+        // echo'<table align="center">';
+        // for ($i=0;$i<$taille;$i++){
 
-            //affichage des grilles créees + liens vers ces dernières.
-            echo '<tr>';
-            for($n=0;$n<$taille;$n++){
-                echo '<td>'."  ".'</td>';
-            }
-            echo '</tr>';
-        }
+        //     //affichage des grilles créees + liens vers ces dernières.
+        //     echo '<tr>';
+        //     for($n=0;$n<$taille;$n++){
+        //         echo '<td>'."  ".'</td>';
+        //     }
+        //     echo '</tr>';
+        // }
 
-        echo'</table>';
+        // echo'</table>';
     ?>
+    <div>
+        <grille>
+            <pixels></pixels>
+        </grille>
+    </div>
+
 
    <?php echo'<a href="./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param='.$pseudo.'">Retour à la selection</a>'?>
 </body>
 </html>
+
+<script src="js\grille.js"></script>

@@ -16,3 +16,29 @@ body{
   color: greenyellow;
 }
 
+grille {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+pixels {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  row-gap: 1px;
+  column-gap: 1px;
+}
+
+pixel {
+  display: flex;
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid #444;
+
+  background: center no-repeat;
+  background-size: contain;
+
+  cursor: pointer;
+}
