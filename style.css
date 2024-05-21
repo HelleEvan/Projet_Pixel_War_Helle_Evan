@@ -5,6 +5,7 @@ table{
 }
 body{
     text-align: center;
+    font-family: sans-serif;
 }
 .warning{
   color: red;

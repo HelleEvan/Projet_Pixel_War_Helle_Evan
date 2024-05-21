@@ -7,6 +7,15 @@
     }
     $pseudo_requete = "SELECT `pseudo` FROM `user` WHERE id=".$id;
     $pseudo = GetSQLValue($pseudo_requete);
+
+    if (isset($_POST["nom"]))
+        {
+            $taille=QuoteStr($_POST["taille"]);
+            $nom=QuoteStr($_POST["nom"]);
+
+            $grille_requete ="INSERT INTO `grille` (`nom`, `taille`, `id_createur`) VALUES ($nom, $taille,$id)";
+            ExecuteSQL($grille_requete);
+        }
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +58,16 @@
 
     </table>
     <br>
-
+    <h1> Création de grille</h1>
+    <form method="POST">
+        <h3>entrez le nom de la grille</h3>
+        <input type="text" name="nom" value="" required>
+        <h3>entrez la taille de grille souhaité</h3>
+        <input type="text" name="taille" value="" required>
+        <br>
+        <input type="submit" value="Creer une grille">
+    </form>
+    <br>
     <a href="./../Projet_Pixel_War_Helle_Evan/connexion.php?isDeconected=1">Deconnexion</a>
 </body>
 </html>
