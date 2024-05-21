@@ -17,6 +17,7 @@ body{
 }
 
 grille {
+  zoom :250%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -26,8 +27,8 @@ grille {
 pixels {
   display: grid;
   grid-template-columns: repeat(30, 1fr);
-  row-gap: 1px;
-  column-gap: 1px;
+  row-gap: 0px;
+  column-gap: 0px;
 }
 
 pixel {
@@ -35,7 +36,7 @@ pixel {
   width: 5px;
   height: 5px;
 
-  border: 1px solid #444;
+  border: 0.5px solid #444;
 
   background: center no-repeat;
   background-size: contain;
