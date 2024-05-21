@@ -43,9 +43,6 @@ pixel {
 
   cursor: pointer;
 }
-.red{
-  background-color: red;
-}
 
 colors {
   display: flex;
@@ -70,10 +67,17 @@ color {
 
   cursor: pointer;
 }
-
+.red{
+  background-color: red;
+}
 .green{
   background-color: green;
 }
 .blue{
   background-color:blue;
+}
+
+color.active {
+  border: 1px solid green;
+  box-shadow: 0 0 4px green;
 }

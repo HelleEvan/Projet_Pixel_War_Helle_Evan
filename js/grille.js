@@ -21,16 +21,17 @@ window.addEventListener("load",color());
 
 function color_choice(){
     const colors_display = Array.from(document.querySelectorAll("color"));
-    tools.forEach(tool => {
-            tool.addEventListener("click",()=>{
-                if(!tool.classList.contains("active")){
+    colors_display.forEach(color => {
+            color.addEventListener("click",()=>{
+                if(!color.classList.contains("active")){
                     try{
-                        document.querySelector("tool.active").classList.remove("active");
+                        document.querySelector("color.active").classList.remove("active");
                     }
                     finally{
-                        tool.classList.add("active");
+                        color.classList.add("active");
                     }
                 }
             });
     });
 }
+window.addEventListener("load",color_choice());
