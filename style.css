@@ -46,3 +46,34 @@ pixel {
 .red{
   background-color: red;
 }
+
+colors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+}
+
+color {
+  width: 50px;
+  height: 50px;
+
+  border: 1px solid #666;
+  border-radius: 10px;
+
+  margin-bottom: 10px;
+
+  background: center no-repeat;
+  background-size: 40px;
+
+  cursor: pointer;
+}
+
+.green{
+  background-color: green;
+}
+.blue{
+  background-color:blue;
+}

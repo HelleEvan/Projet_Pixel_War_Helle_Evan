@@ -19,23 +19,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php 
-        // $requete = "SELECT `taille` FROM `grille` WHERE `nom`=".$grille;
-        // $taille = GetSQLValue($requete);
-        // echo'<table align="center">';
-        // for ($i=0;$i<$taille;$i++){
-
-        //     //affichage des grilles créees + liens vers ces dernières.
-        //     echo '<tr>';
-        //     for($n=0;$n<$taille;$n++){
-        //         echo '<td>'."  ".'</td>';
-        //     }
-        //     echo '</tr>';
-        // }
-
-        // echo'</table>';
-    ?>
     <div>
+        <colors>
+            <color class="red" title="red"></color>
+            <color class="green" title="green"></color>
+            <color class="blue" title="blue"></color>
+        </colors>
         <grille>
             <pixels></pixels>
         </grille>

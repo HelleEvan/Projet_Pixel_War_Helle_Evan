@@ -18,3 +18,19 @@ function color(){
     });
 }
 window.addEventListener("load",color());
+
+function color_choice(){
+    const colors_display = Array.from(document.querySelectorAll("color"));
+    tools.forEach(tool => {
+            tool.addEventListener("click",()=>{
+                if(!tool.classList.contains("active")){
+                    try{
+                        document.querySelector("tool.active").classList.remove("active");
+                    }
+                    finally{
+                        tool.classList.add("active");
+                    }
+                }
+            });
+    });
+}
