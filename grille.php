@@ -3,7 +3,7 @@
     $grille=QuoteStr($_GET["nom"]);
     //pour ne pas avoir les apostrophes dans le titre de la page
     $titre=$_GET["nom"];
-    $pseudo=$_GET["param"];
+    $id=$_GET["param"];
     //test de connexion
     if($_SESSION['isConnected']==false){
         header("location: connexion.php");
@@ -31,7 +31,7 @@
     </div>
 
 
-   <?php echo'<a href="./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param='.$pseudo.'">Retour à la selection</a>'?>
+   <?php echo'<a href="./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param='.$id.'">Retour à la selection</a>'?>
 </body>
 </html>
 
