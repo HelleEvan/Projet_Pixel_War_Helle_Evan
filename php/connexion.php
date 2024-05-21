@@ -1,5 +1,5 @@
 <?php 
-    include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
+    include("../include/config.inc.php");
     $MauvaisMotDePasse=$MauvaisCompte=false;
     if(isset($_GET["isDeconected"])){
         $_SESSION['isConnected']=false;
@@ -24,7 +24,7 @@
                     $id_requete="select id from `user` where email = ".QuoteStr($_POST["email"]);
                     $id = GetSQLValue($id_requete);
                     // je vais à la page de selection de grille
-                    header("location: ./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param=".$id); 
+                    header("location: ../php/selection_grille.php?param=".$id); 
                 }
             else
                 {
@@ -45,7 +45,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
+
 
 </head>
 <body>
@@ -72,7 +73,7 @@
         <input type="password" name="password" value="" required>
         <input type="submit" value="Connexion">
     </form>
-    <a href="./../Projet_Pixel_War_Helle_Evan\creation_compte.php"> Création de compte</a>
+    <a href="../php/creation_compte.php"> Création de compte</a>
     
 </body>
 </html>

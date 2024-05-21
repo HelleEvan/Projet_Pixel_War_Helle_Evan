@@ -1,12 +1,12 @@
 <?php 
-    include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
+    include("../include/config.inc.php");
     $grille=QuoteStr($_GET["nom"]);
     //pour ne pas avoir les apostrophes dans le titre de la page
     $titre=$_GET["nom"];
     $id=$_GET["param"];
     //test de connexion
     if($_SESSION['isConnected']==false){
-        header("location: connexion.php");
+        header("location: ../php/connexion.php");
     }
 ?>
 
@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo $titre?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div>
@@ -31,8 +31,8 @@
     </div>
 
 
-   <?php echo'<a href="./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param='.$id.'">Retour à la selection</a>'?>
+   <?php echo'<a href="../php/selection_grille.php?param='.$id.'">Retour à la selection</a>'?>
 </body>
 </html>
 
-<script src="js\grille.js"></script>
+<script src="../js/grille.js"></script>

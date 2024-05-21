@@ -1,9 +1,9 @@
 <?php 
-    include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
+    include("../include/config.inc.php");
     $id=$_GET["param"];
     //test de connexion
     if($_SESSION['isConnected']==false){
-        header("location: connexion.php");
+        header("location: ../php/connexion.php");
     }
     $pseudo_requete = "SELECT `pseudo` FROM `user` WHERE id=".$id;
     $pseudo = GetSQLValue($pseudo_requete);
@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selection_grille</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
@@ -50,7 +50,7 @@
 
                 echo '<TR>';
                 //affichage des grilles créees + liens vers ces dernières.
-                    echo '<td><a href="grille.php?nom='.$nom.'&param='.$id.'">'.$nom.'</a></td>';
+                    echo '<td><a href="../php/grille.php?nom='.$nom.'&param='.$id.'">'.$nom.'</a></td>';
                 echo '</TR>';
             }
         ?>
@@ -68,6 +68,6 @@
         <input type="submit" value="Creer une grille">
     </form>
     <br>
-    <a href="./../Projet_Pixel_War_Helle_Evan/connexion.php?isDeconected=1">Deconnexion</a>
+    <a href="../php/connexion.php?isDeconected=1">Deconnexion</a>
 </body>
 </html>

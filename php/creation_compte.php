@@ -1,5 +1,5 @@
 <?php 
-    include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
+    include("../include\config.inc.php");
     //recuperation des POST
     $isCreated = false;
     $pseudo_already_used =false;
@@ -40,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enregistrement</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <h1>Création de compte</h1>
@@ -65,7 +65,7 @@
             echo "<h3 class='warning'> /!\ le mail à déjà été utilisé  /!\ </h3>";
         }
     ?>
-    <a href="./../Projet_Pixel_War_Helle_Evan\connexion.php"> Déjà un compte? -> S'identifier</a>
+    <a href="../php/connexion.php"> Déjà un compte? -> S'identifier</a>
     
 </body>
 </html>
