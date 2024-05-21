@@ -21,10 +21,10 @@
             if($hash==$hash_poste)
                 {
                     $_SESSION['isConnected']=true;
-                    $pseudo_requete="select pseudo from `user` where email = ".QuoteStr($_POST["email"]);
-                    $pseudo = GetSQLValue($pseudo_requete);
+                    $id_requete="select id from `user` where email = ".QuoteStr($_POST["email"]);
+                    $id = GetSQLValue($id_requete);
                     // je vais à la page de selection de grille
-                    header("location: ./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param=".$pseudo); 
+                    header("location: ./../Projet_Pixel_War_Helle_Evan/selection_grille.php?param=".$id); 
                 }
             else
                 {
@@ -45,6 +45,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 

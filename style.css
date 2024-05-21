@@ -1,10 +1,7 @@
-table {
-    border: 2px solid rgb(140 140 140);
-    zoom: 300%;
-  }
-  th,tr,
-td {
-  border: 1px solid rgb(160 160 160);
+table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 body{
     text-align: center;

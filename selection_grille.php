@@ -1,10 +1,12 @@
 <?php 
     include("./../Projet_Pixel_War_Helle_Evan/include/config.inc.php");
-    $pseudo=$_GET["param"];
+    $id=$_GET["param"];
     //test de connexion
     if($_SESSION['isConnected']==false){
         header("location: connexion.php");
     }
+    $pseudo_requete = "SELECT `pseudo` FROM `user` WHERE id=".$id;
+    $pseudo = GetSQLValue($pseudo_requete);
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +15,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selection_grille</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <h1>Bienvenue <?php echo $pseudo ?> sur la PixelWar!</h1>
@@ -27,7 +31,7 @@
 
     <table>
         <tr>
-            <th>Nom</th>
+            <th>Nom :</th>
         </tr>
         <tr>
         <?php
