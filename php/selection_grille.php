@@ -1,6 +1,8 @@
 <?php 
     include("../include/config.inc.php");
     $id=$_GET["param"];
+    $grille_already_exists =false;
+    $grille_created = false;
     //test de connexion
     if($_SESSION['isConnected']==false){
         header("location: ../php/connexion.php");
@@ -12,9 +14,19 @@
         {
             $taille=QuoteStr($_POST["taille"]);
             $nom=QuoteStr($_POST["nom"]);
+            //gestion pseudo et email identique
+            $existing_grille_requete = "SELECT `nom` FROM `grille` WHERE `nom`=".$nom;
+            $existing_grille = GetSQLValue($existing_grille_requete);
 
-            $grille_requete ="INSERT INTO `grille` (`nom`, `taille`, `id_createur`) VALUES ($nom, $taille,$id)";
-            ExecuteSQL($grille_requete);
+            if(isset($existing_grille)){
+
+                $grille_already_exists =true;
+            }
+            else{
+                $grille_requete ="INSERT INTO `grille` (`nom`, `taille`, `id_createur`) VALUES ($nom, $taille,$id)";
+                ExecuteSQL($grille_requete);
+                $grille_created = true;
+            }
         }
 ?>
 
@@ -68,6 +80,14 @@
         <input type="submit" value="Creer une grille">
     </form>
     <br>
+    <?php
+        if($grille_already_exists){
+            echo "<h3 class='warning'> /!\ le nom de grille a déjà été utilisé /!\ </h3>";
+        }
+        else if($grille_created){
+            echo "<h3 class='well_created'> /!\ La grille a bien été crée /!\ </h3>";
+        }
+    ?>
     <a href="../php/connexion.php?isDeconected=1">Deconnexion</a>
 </body>
 </html>

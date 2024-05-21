@@ -56,13 +56,13 @@
     </form>
     <?php
         if($isCreated){
-            echo "<h3 class='well_created'> /!\ Votre compte à été crée avec succès  /!\ </h3>";
+            echo "<h3 class='well_created'> /!\ Votre compte a été crée avec succès  /!\ </h3>";
         }
         if($pseudo_already_used){
-            echo "<h3 class='warning'> /!\ le pseudo à déjà été utilisé /!\ </h3>";
+            echo "<h3 class='warning'> /!\ le pseudo a déjà été utilisé /!\ </h3>";
         }
         if($email_already_used){
-            echo "<h3 class='warning'> /!\ le mail à déjà été utilisé  /!\ </h3>";
+            echo "<h3 class='warning'> /!\ le mail a déjà été utilisé  /!\ </h3>";
         }
     ?>
     <a href="../php/connexion.php"> Déjà un compte? -> S'identifier</a>
