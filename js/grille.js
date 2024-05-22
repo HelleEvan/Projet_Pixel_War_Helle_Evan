@@ -1,3 +1,4 @@
+
 function generateGrille(){
     const grille = document.querySelector("pixels");
 
@@ -12,21 +13,28 @@ window.addEventListener("load",generateGrille());
 function color(){
     const pixels = Array.from(document.querySelectorAll("pixel"));
     const colors_display = Array.from(document.querySelectorAll("color"));
+    let position =0;
     pixels.forEach(pixel => {
         colors_display.forEach(color =>{
             pixel.addEventListener("click",()=>{
+                position ++;
                 if(color.classList.contains("red")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("red");
+                    grille_save(pixel,position);
                 }
                 if(color.classList.contains("green")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("green");
+                    grille_save(pixel,position);
                 }
                 if(color.classList.contains("blue")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("blue");
+                    grille_save(pixel,position);
                 }
+                
+                
             });
         });
     });
@@ -61,3 +69,10 @@ function color_choice(){
     });
 }
 window.addEventListener("load",color_choice());
+
+function grille_save(pixel,position){
+
+    const couleur =pixel.classList;
+    console.log(couleur,position);
+        
+}
