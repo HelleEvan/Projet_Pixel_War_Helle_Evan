@@ -2,8 +2,9 @@
 function generateGrille(){
     const grille = document.querySelector("pixels");
 
-    for(let i=0;i<900;i++){
+    for(let i=1;i<901;i++){
         const pixel = document.createElement("pixel");
+        pixel.id=i;
         grille.appendChild(pixel);
     }
 
@@ -21,17 +22,14 @@ function color(){
                 if(color.classList.contains("red")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("red");
-                    grille_save(pixel,position);
                 }
                 if(color.classList.contains("green")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("green");
-                    grille_save(pixel,position);
                 }
                 if(color.classList.contains("blue")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("blue");
-                    grille_save(pixel,position);
                 }
                 
                 
@@ -70,9 +68,12 @@ function color_choice(){
 }
 window.addEventListener("load",color_choice());
 
-function grille_save(pixel,position){
-
-    const couleur =pixel.classList;
-    console.log(couleur,position);
-        
+function grille_save(){
+    const grille = Array.from(document.querySelectorAll("pixel"));
+    grille.forEach(pixel=>{
+        const couleur =pixel.classList;
+        const id = pixel.id;
+        console.log(couleur,id);
+    })
 }
+window.addEventListener("load",grille_save());
