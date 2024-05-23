@@ -13,6 +13,19 @@
     $id_createur = GetSQLValue($id_createur_requete);
     $createur_requete = "SELECT `pseudo` FROM `user` WHERE id=".$id_createur;
     $createur = GetSQLValue($createur_requete);
+
+    //save de la grille:
+    
+        $data = json_decode(file_get_contents('php://input'),true);
+        if(isset($data['position'])){
+            $position =$data['position'];
+            $couleur = $data['couleur'];
+
+            echo ''.$position[1].''.$couleur[1].'';
+                // $save_requete = $sql="INSERT INTO `pixel` (`couleur`, `positionX`) VALUES ($couleur, $position)";
+                // ExecuteSQL($save_requete);
+        }
+        
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +52,7 @@
    <?php echo'<a href="../php/selection_grille.php?param='.$id.'">Retour à la selection</a>'?>
    <br>
     <?php 
-    echo 'Cette grille a été crée par :'.$createur;
+    echo 'Cette grille a été créée par :'.$createur;
     ?>
 </body>
 </html>

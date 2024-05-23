@@ -4,6 +4,7 @@ function generateGrille(){
 
     for(let i=1;i<901;i++){
         const pixel = document.createElement("pixel");
+        pixel.classList.add("white");
         pixel.id=i;
         grille.appendChild(pixel);
     }
@@ -22,14 +23,19 @@ function color(){
                 if(color.classList.contains("red")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("red");
+                    grille_save();
                 }
                 if(color.classList.contains("green")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("green");
+                    grille_save();
+
                 }
                 if(color.classList.contains("blue")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("blue");
+                    grille_save();
+
                 }
                 
                 
@@ -48,6 +54,9 @@ function rm_color(pixel){
     }
     else if(pixel.classList.contains("blue")){
         pixel.classList.remove("blue");
+    }
+    else if(pixel.classList.contains("white")){
+        pixel.classList.remove("white");
     }
 }
 //selection de couleur
@@ -69,11 +78,24 @@ function color_choice(){
 window.addEventListener("load",color_choice());
 
 function grille_save(){
+    const couleurs = [];
+    const positions = [];
     const grille = Array.from(document.querySelectorAll("pixel"));
-    grille.forEach(pixel=>{
-        const couleur =pixel.classList;
-        const id = pixel.id;
-        console.log(couleur,id);
+    grille.forEach(pixel => {
+        couleurs.push(Array.from(pixel.classList));
+        positions.push(pixel.id);
+        
+    });
+    console.log(couleurs,positions);
+    fetch('../php/grille.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            position: positions,
+            couleur: couleurs,
+            
+        })
     })
 }
+
 window.addEventListener("load",grille_save());
