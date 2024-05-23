@@ -11,35 +11,47 @@ function generateGrille(){
 
 }
 window.addEventListener("load",generateGrille());
+
+function waiting(){
+    setTimeout(()=>{
+
+    },15000);
+}
 //changer la couleur d'un pixel
 function color(){
     const pixels = Array.from(document.querySelectorAll("pixel"));
     const colors_display = Array.from(document.querySelectorAll("color"));
+    let delay =true;
     pixels.forEach(pixel => {
         colors_display.forEach(color =>{
             pixel.addEventListener("click",()=>{
+                
+                
                 if(color.classList.contains("red")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("red");
                     grille_save();
+                    
                 }
                 if(color.classList.contains("green")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("green");
-                    grille_save();
-
+                    grille_save();    
                 }
                 if(color.classList.contains("blue")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("blue");
                     grille_save();
-
-                }
-                
-                
+                         
+                }  
+                delay = false;
+                waiting()
             });
         });
+
     });
+    
+
 }
 window.addEventListener("load",color());
 
@@ -84,7 +96,7 @@ function grille_save(){
         positions.push(pixel.id);
         
     });
-    console.log(couleurs,positions);
+    //console.log(couleurs,positions);
     fetch('../php/grille.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
