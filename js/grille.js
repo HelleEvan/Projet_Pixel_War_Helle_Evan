@@ -13,9 +13,7 @@ function generateGrille(){
 window.addEventListener("load",generateGrille());
 
 function waiting(){
-    setTimeout(()=>{
-
-    },15000);
+    setTimeout(15000);
 }
 //changer la couleur d'un pixel
 function color(){
@@ -25,13 +23,10 @@ function color(){
     pixels.forEach(pixel => {
         colors_display.forEach(color =>{
             pixel.addEventListener("click",()=>{
-                
-                
                 if(color.classList.contains("red")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("red");
                     grille_save();
-                    
                 }
                 if(color.classList.contains("green")&&color.classList.contains("active")){
                     rm_color(pixel);
@@ -42,7 +37,6 @@ function color(){
                     rm_color(pixel);
                     pixel.classList.add("blue");
                     grille_save();
-                         
                 }  
                 delay = false;
                 waiting()
