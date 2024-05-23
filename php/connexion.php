@@ -50,16 +50,18 @@
 
 </head>
 <body>
-
-
-
+    <div class="header">
+        <img src="../image/Polytech_dijon.png">
+    </div>
     <h1>Veuillez vous identifier</h1>
     <form method="POST">
         <h3>entrez votre email</h3>
         <input type="email" name="email" value="" required>
         <h3>entrez un mot de passe</h3>
         <input type="password" name="password" value="" required>
-        <input type="submit" value="Connexion">
+        <br>
+        <br>
+        <input class="button" type="submit" value="Connexion">
     </form>
 <!-- On regarde le mot de passe et le compte-->
     <?php
@@ -71,7 +73,7 @@
         }
     ?>
     <br>
-    <a href="../php/creation_compte.php"> Création de compte</a>
+    <a class="button" href="../php/creation_compte.php"> Création de compte</a>
     
 </body>
 </html>

@@ -49,7 +49,7 @@
     </div>
 
 
-   <?php echo'<a href="../php/selection_grille.php?param='.$id.'">Retour à la selection</a>'?>
+   <?php echo'<a class="button" href="../php/selection_grille.php?param='.$id.'">Retour à la selection</a>'?>
    <br>
     <?php 
     echo 'Cette grille a été créée par :'.$createur;

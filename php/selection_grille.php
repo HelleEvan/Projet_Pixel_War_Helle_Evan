@@ -40,6 +40,9 @@
 
 </head>
 <body>
+    <div class="header">
+        <img src="../image/Polytech_dijon.png">
+    </div>
     <h1>Bienvenue <?php echo $pseudo ?> sur la PixelWar!</h1>
     <br>
     <h1>Selection de grille</h1>
@@ -62,7 +65,7 @@
 
                 echo '<TR>';
                 //affichage des grilles créees + liens vers ces dernières.
-                    echo '<td><a href="../php/grille.php?nom='.$nom.'&param='.$id.'">'.$nom.'</a></td>';
+                    echo '<td><a class="button" href="../php/grille.php?nom='.$nom.'&param='.$id.'">'.$nom.'</a></td>';
                 echo '</TR>';
             }
         ?>
@@ -76,8 +79,8 @@
         <input type="text" name="nom" value="" required>
         <h3>entrez la taille de grille souhaité</h3>
         <input type="text" name="taille" value="" required>
-        <br>
-        <input type="submit" value="Creer une grille">
+        <br><br>
+        <input class="button" type="submit" value="Creer une grille">
     </form>
     <br>
     <?php
@@ -88,6 +91,6 @@
             echo "<h3 class='well_created'> /!\ La grille a bien été crée /!\ </h3>";
         }
     ?>
-    <a href="../php/connexion.php?isDeconected=1">Deconnexion</a>
+    <a class="button" href="../php/connexion.php?isDeconected=1">Deconnexion</a>
 </body>
 </html>

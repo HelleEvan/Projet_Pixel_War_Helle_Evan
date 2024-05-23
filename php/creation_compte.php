@@ -43,6 +43,9 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+    <div class="header">
+        <img src="../image/Polytech_dijon.png">
+    </div>
     <h1>Création de compte</h1>
 <!-- formulaire pour enregistrer un user-->
     <form method="POST">
@@ -52,7 +55,8 @@
         <input type="password" name="password" value="" required>
         <h3>entrez un mail</h3>
         <input type="email" name="email" value="" required>
-        <input type="submit" value="S'enregister">
+        <br><br>
+        <input class="button" type="submit" value="S'enregister">
     </form>
     <?php
         if($isCreated){
@@ -66,7 +70,7 @@
         }
     ?>
     <br>
-    <a href="../php/connexion.php"> Déjà un compte? -> S'identifier</a>
+    <a class="button" href="../php/connexion.php"> Déjà un compte? -> S'identifier</a>
     
 </body>
 </html>
