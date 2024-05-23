@@ -15,11 +15,9 @@ window.addEventListener("load",generateGrille());
 function color(){
     const pixels = Array.from(document.querySelectorAll("pixel"));
     const colors_display = Array.from(document.querySelectorAll("color"));
-    let position =0;
     pixels.forEach(pixel => {
         colors_display.forEach(color =>{
             pixel.addEventListener("click",()=>{
-                position ++;
                 if(color.classList.contains("red")&&color.classList.contains("active")){
                     rm_color(pixel);
                     pixel.classList.add("red");
