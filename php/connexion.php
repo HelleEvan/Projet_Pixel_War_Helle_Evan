@@ -9,8 +9,12 @@
     if (isset($_POST["email"]))
     {
 
-        $password_bdd="select password from `user` where email = ".QuoteStr($_POST["email"]);
-        $hash=GetSQLValue($password_bdd);
+        $password_bdd=$link->prepare("select password from `user` where email =? ");
+        $password_bdd->bind_param("s",$_POST["email"]);
+        $password_bdd->execute();
+        $result = $password_bdd->get_result();
+        $row =$result->fetch_assoc();
+        $hash = $row ? $row["password"]:null;
                 
         // la variable $hash correspond au sha256 du password
 
@@ -21,10 +25,15 @@
             if($hash==$hash_poste)
                 {
                     $_SESSION['isConnected']=true;
-                    $id_requete="select id from `user` where email = ".QuoteStr($_POST["email"]);
-                    $id = GetSQLValue($id_requete);
+                    $id_requete=$link->prepare("select id from `user` where email = ?");
+                    $id_requete->bind_param("s",$_POST["email"]);
+                    $id_requete->execute();
+                    $id_result=$id_requete->get_result();
+                    $id_row=$id_result->fetch_assoc();
+                    $id=$id_row ? $id_row["id"] : null;
                     // je vais à la page de selection de grille
                     header("location: ../php/selection_grille.php?param=".$id); 
+                    $id_requete->close();
                 }
             else
                 {
@@ -36,6 +45,7 @@
             { 
                 $MauvaisCompte=true;
             }
+        $password_bdd->close();
     }
 ?>
 

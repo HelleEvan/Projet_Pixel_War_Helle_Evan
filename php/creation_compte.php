@@ -7,16 +7,27 @@
     if (isset($_POST["pseudo"]))
         {
             
-            $pseudo=QuoteStr($_POST["pseudo"]);
-            $email=QuoteStr($_POST["email"]);
+            $pseudo=$_POST["pseudo"];
+            $email=$_POST["email"];
             //hash du password
             $hash_password=hash('sha256', $_POST["password"]);
             $password=QuoteStr($hash_password);
+
             //gestion pseudo et email identique
-            $existing_pseudo_requete = "SELECT `pseudo` FROM `user` WHERE `pseudo`=".$pseudo;
-            $existing_pseudo = GetSQLValue($existing_pseudo_requete);
-            $existing_email_requete = "SELECT `email` FROM `user` WHERE `email`=".$email;
-            $existing_email = GetSQLValue($existing_email_requete);
+            $existing_pseudo_requete =$link->prepare("SELECT `pseudo` FROM `user` WHERE `pseudo`=?");
+            $existing_pseudo_requete->bind_param("s",$pseudo);
+            $existing_pseudo_requete->execute();
+            $result=$existing_pseudo_requete->get_result();
+            $row = $result->fetch_assoc();
+            $existing_pseudo= $row ? $row["pseudo"]:null;
+
+            $existing_email_requete =$link->prepare("SELECT `email` FROM `user` WHERE `email`=?");
+            $existing_email_requete->bind_param("s",$email);
+            $existing_email_requete->execute();
+            $mail_result = $existing_email_requete->get_result();
+            $mail_row = $mail_result->fetch_assoc();
+            $existing_email=$mail_row ? $mail_row["email"] : null;
+            
             if(isset($existing_pseudo)){
 
                 $pseudo_already_used =true;
@@ -26,12 +37,16 @@
             }
             else{
 
-                $sql="INSERT INTO `user` (`pseudo`, `password`, `email`) VALUES ($pseudo, $password,$email)";
-                ExecuteSQL($sql);
+                $sql=$link->prepare("INSERT INTO `user` (`pseudo`, `password`, `email`) VALUES (?,?,?)");
+                $sql->bind_param("sss",$pseudo,$password,$email);
+                $sql->execute();
                 $isCreated = true;
+                $sql->close();
             }
-        
+            $existing_pseudo_requete->close();
+            $existing_email_requete->close();
         }
+
 ?>
 
 <!DOCTYPE html>

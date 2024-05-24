@@ -7,27 +7,40 @@
     if($_SESSION['isConnected']==false){
         header("location: ../php/connexion.php");
     }
-    $pseudo_requete = "SELECT `pseudo` FROM `user` WHERE id=".$id;
-    $pseudo = GetSQLValue($pseudo_requete);
+    $pseudo_requete =$link->prepare("SELECT `pseudo` FROM `user` WHERE id=?");
+    $pseudo_requete->bind_param("i",$id);
+    $pseudo_requete->execute();
+    $pseudo_result=$pseudo_requete->get_result();
+    $pseudo_row=$pseudo_result->fetch_assoc();
+    $pseudo=$pseudo_row ? $pseudo_row["pseudo"]:null;
 
     if (isset($_POST["nom"]))
         {
-            $taille=QuoteStr($_POST["taille"]);
-            $nom=QuoteStr($_POST["nom"]);
-            //gestion pseudo et email identique
-            $existing_grille_requete = "SELECT `nom` FROM `grille` WHERE `nom`=".$nom;
-            $existing_grille = GetSQLValue($existing_grille_requete);
+            $taille=$_POST["taille"];
+            $nom=$_POST["nom"];
+            //gestion nom identique
+            $existing_grille_requete =$link->prepare("SELECT `nom` FROM `grille` WHERE `nom`=?");
+            $existing_grille_requete->bind_param("s",$nom);
+            $existing_grille_requete->execute();
+            $grille_result= $existing_grille_requete->get_result();
+            $grille_row = $grille_result->fetch_assoc();
+            $existing_grille = $grille_row ? $grille_row["nom"]:null;
 
             if(isset($existing_grille)){
 
                 $grille_already_exists =true;
             }
             else{
-                $grille_requete ="INSERT INTO `grille` (`nom`, `taille`, `id_createur`) VALUES ($nom, $taille,$id)";
-                ExecuteSQL($grille_requete);
+                $grille_requete =$link->prepare("INSERT INTO `grille` (`nom`, `taille`, `id_createur`) VALUES (?,?,?)");
+                $grille_requete->bind_param("ssi",$nom,$taille,$id);
+                $grille_requete->execute();
+
                 $grille_created = true;
+                $grille_requete->close();
             }
+            $existing_grille_requete->close();
         }
+        $pseudo_requete->close();
 ?>
 
 <!DOCTYPE html>

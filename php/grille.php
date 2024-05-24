@@ -4,15 +4,31 @@
     if($_SESSION['isConnected']==false){
         header("location: ../php/connexion.php");
     }
-    $grille=QuoteStr($_GET["nom"]);
+    $grille=$_GET["nom"];
     //pour ne pas avoir les apostrophes dans le titre de la page
     $titre=$_GET["nom"];
     $id=$_GET["param"];
     
-    $id_createur_requete ="SELECT `id_createur`FROM `grille` WHERE `nom`=".$grille;
-    $id_createur = GetSQLValue($id_createur_requete);
-    $createur_requete = "SELECT `pseudo` FROM `user` WHERE id=".$id_createur;
-    $createur = GetSQLValue($createur_requete);
+    //requetes préparées
+    $id_createur_requete =$link->prepare("SELECT `id_createur`FROM `grille` WHERE `nom`=?");
+    $id_createur_requete->bind_param("s",$grille);
+    $id_createur_requete->execute();  
+    $result=$id_createur_requete->get_result();
+
+    $row = $result->fetch_assoc();
+    $id_createur = $row ? $row["id_createur"]:null;
+    
+    $createur_requete = $link->prepare("SELECT `pseudo` FROM `user` WHERE `id`=?");
+    $createur_requete->bind_param("i", $id_createur);
+    $createur_requete->execute();
+    $createur_result = $createur_requete->get_result();
+
+    $createur_row = $createur_result->fetch_assoc();
+    $createur = $createur_row ? $createur_row['pseudo']:null;
+        
+    $createur_requete->close();
+    $id_createur_requete->close();
+    
 
     //save de la grille:
     
