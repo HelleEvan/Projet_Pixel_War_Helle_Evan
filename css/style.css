@@ -123,3 +123,7 @@ color.active {
   width: 200px;
   margin-left: 10px;
 }
+.not-allowed {
+  pointer-events: none;
+  cursor: not-allowed;
+}

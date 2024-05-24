@@ -12,14 +12,10 @@ function generateGrille(){
 }
 window.addEventListener("load",generateGrille());
 
-function waiting(){
-    setTimeout(15000);
-}
 //changer la couleur d'un pixel
 function color(){
     const pixels = Array.from(document.querySelectorAll("pixel"));
     const colors_display = Array.from(document.querySelectorAll("color"));
-    let delay =true;
     pixels.forEach(pixel => {
         colors_display.forEach(color =>{
             pixel.addEventListener("click",()=>{
@@ -37,15 +33,14 @@ function color(){
                     rm_color(pixel);
                     pixel.classList.add("blue");
                     grille_save();
-                }  
-                delay = false;
-                waiting()
-            });
+                }
+                pixels.forEach(p => p.classList.add("not-allowed"));
+                setTimeout(()=>{
+                    pixels.forEach(p => p.classList.remove("not-allowed"));
+                },15000);
+            });  
         });
-
     });
-    
-
 }
 window.addEventListener("load",color());
 
