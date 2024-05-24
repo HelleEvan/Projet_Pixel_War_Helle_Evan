@@ -19,25 +19,31 @@ function color(){
     pixels.forEach(pixel => {
         colors_display.forEach(color =>{
             pixel.addEventListener("click",()=>{
-                if(color.classList.contains("red")&&color.classList.contains("active")){
-                    rm_color(pixel);
-                    pixel.classList.add("red");
-                    grille_save();
-                }
-                if(color.classList.contains("green")&&color.classList.contains("active")){
-                    rm_color(pixel);
-                    pixel.classList.add("green");
-                    grille_save();    
-                }
-                if(color.classList.contains("blue")&&color.classList.contains("active")){
-                    rm_color(pixel);
-                    pixel.classList.add("blue");
-                    grille_save();
-                }
-                pixels.forEach(p => p.classList.add("not-allowed"));
-                setTimeout(()=>{
-                    pixels.forEach(p => p.classList.remove("not-allowed"));
-                },15000);
+                
+                    if(color.classList.contains("red")&&color.classList.contains("active")){
+                        rm_color(pixel);
+                        pixel.classList.add("red");
+                        grille_save();
+                    }
+                    else if(color.classList.contains("green")&&color.classList.contains("active")){
+                        rm_color(pixel);
+                        pixel.classList.add("green");
+                        grille_save();    
+                    }
+                    else if(color.classList.contains("blue")&&color.classList.contains("active")){
+                        rm_color(pixel);
+                        pixel.classList.add("blue");
+                        grille_save();
+                    }
+                    pixels.forEach(p => p.classList.add("not-allowed"));
+                    setTimeout(()=>{
+                        pixels.forEach(p => p.classList.remove("not-allowed"));
+                        pixel.classList.add("not-allowed");
+                        setTimeout(()=>{
+                            pixel.classList.remove("not-allowed")
+                        },15000);
+                    },15000);
+                    
             });  
         });
     });
