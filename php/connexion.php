@@ -83,6 +83,8 @@
         }
     ?>
     <br>
+    <a class="button" href="../php/mdp_oublie.php">mot de passe oublié?</a>
+    <br>
     <a class="button" href="../php/creation_compte.php"> Création de compte</a>
     
 </body>
